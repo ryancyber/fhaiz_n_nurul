@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <style>
+    /* Pengaturan tulisan story love */
    .story-text { /* biarkan ukuran huruf mengikuti tema kamu */
     text-wrap: pretty;
     }
@@ -32,6 +33,78 @@
     margin: 0 .08em;       /* spasi kanan-kiri tipis */
     vertical-align: -0.1em;/* sejajarkan rapi dengan teks */
     }
+
+    /* ===== Wedding Gift Cards ===== */
+    .gift-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    }
+    .bank-card {
+    position: relative;
+    border-radius: 20px;
+    padding: 22px 22px 20px;
+    margin-bottom: 22px;
+    box-shadow: 0 12px 28px rgba(0,0,0,.10);
+    background: radial-gradient(120% 120% at 0% 0%, #f2b3b3 0%, #d78787 38%, #c06161 100%);
+    color: #fff;
+    overflow: hidden;
+    }
+    .bank-card .row-1 {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 18px;
+    }
+    .bank-card .bank-logo {
+    height: 44px;
+    display: inline-flex; align-items: center;
+    background: #fff; border-radius: 10px; padding: 6px 10px;
+    }
+    .bank-card .bank-logo img { height: 28px; display:block; }
+    .bank-card .chip {
+    width: 56px; height: 40px; border-radius: 8px;
+    background: linear-gradient(145deg, #ffe6a1, #f7c65a);
+    box-shadow: inset 0 2px 3px rgba(0,0,0,.15), 0 2px 4px rgba(0,0,0,.15);
+    }
+
+    .bank-card .label { opacity:.9; letter-spacing:.02em; }
+    .bank-card .value  { font-size: 20px; font-weight: 700; letter-spacing:.02em; }
+
+    .bank-card .rows { display: grid; gap: 6px; }
+    .bank-card .ctrl {
+    margin-top: 14px; display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap;
+    }
+    .bank-card .btn-copy {
+    appearance: none; border: 0; border-radius: 9999px;
+    padding: 10px 14px; font-weight: 600; cursor: pointer;
+    background: #fff; color: #7a2a2a;
+    box-shadow: 0 8px 18px rgba(0,0,0,.12);
+    display: inline-flex; align-items: center; gap:10px;
+    }
+    .bank-card .btn-copy:active { transform: translateY(1px); }
+
+    .bank-card small.holder { font-style: italic; opacity:.95; }
+
+    /* Variasi warna per bank (opsional) */
+    .bank-card.bni { background: radial-gradient(120% 120% at 0% 0%, #ffa7a7 0%, #d16a6a 50%, #b44d4d 100%); }
+    .bank-card.bri { background: radial-gradient(120% 120% at 0% 0%, #f1a9b8 0%, #d37487 50%, #b45567 100%); }
+
+    /* Responsif */
+    @media (max-width:576px){
+    .bank-card { border-radius: 16px; padding: 18px; }
+    .bank-card .value { font-size: 18px; }
+    .bank-card .bank-logo { height: 40px; }
+    .bank-card .bank-logo img { height: 24px; }
+    .bank-card .chip { width: 50px; height: 36px; }
+    }
+
+    /* Toast kecil */
+    .toast-mini {
+    position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+    background: rgba(0,0,0,.85); color:#fff; padding:10px 14px; border-radius: 10px;
+    font-weight: 600; z-index: 99999; opacity: 0; pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    }
+    .toast-mini.show { opacity: 1; transform: translateX(-50%) translateY(-4px); }
+    /* ===== END Wedding Gift Cards ===== */
 
 </style>
 
@@ -417,7 +490,7 @@
     </div>
     <!-- Gallery Area End -->
     <!--? Gift Start -->
-    <section class="gift-area gift-padding fix" data-background="assets/img/gallery/section_bg3.png">
+    <!-- <section class="gift-area gift-padding fix" data-background="assets/img/gallery/section_bg3.png">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -432,7 +505,85 @@
                 </div>
             </div>
         </div>
+    </section> -->
+    <section class="gift-area gift-padding fix" data-background="assets/img/gallery/section_bg3.png">
+    <div class="container">
+        <div class="row">
+        <div class="col-12">
+            <div class="gift-caption text-center gift-wrap">
+            <h2 class="title" style="margin-bottom:10px;">Wedding Gift</h2>
+            <p class="lead" style="margin-bottom:28px;">
+                Doa restu Anda adalah karunia yang berarti bagi kami.
+                Jika berkenan berbagi tanda kasih, berikut rekening tujuan:
+            </p>
+
+            <!-- ==== KARTU 1: BNI ==== -->
+            <article class="bank-card bni"
+                    data-bank="BNI"
+                    data-account="1887016140"
+                    data-holder="Moriesya F. Juraidin (Esha)">
+                <div class="row-1">
+                <span class="bank-logo">
+                    <img src="assets/img/bank/BANK_BRI.png" alt="BNI">
+                </span>
+                <!-- <span class="chip" aria-hidden="true"></span> -->
+                </div>
+                <div class="rows">
+                <div>
+                    <div class="label">No Rekening</div>
+                    <div class="value acc-number">005001154958504</div>
+                </div>
+                <div>
+                    <div class="label">Atas Nama</div>
+                    <div class="value"><small class="holder">Nurul Wulandari</small></div>
+                </div>
+                </div>
+                <div class="ctrl">
+                <button class="btn-copy" data-copy=".acc-number" type="button">
+                    <span aria-hidden="true">📋</span> Salin
+                </button>
+                </div>
+            </article>
+
+            <!-- ==== KARTU 2: BRI ==== -->
+            <article class="bank-card bri"
+                    data-bank="BRI"
+                    data-account="154801001420535"
+                    data-holder="Taufiq Arsyad (Opie)">
+                <div class="row-1">
+                <span class="bank-logo">
+                    <img src="assets/img/bank/mandiri-logo.png" alt="BRI">
+                </span>
+                <!-- <span class="chip fa fa-chip" aria-hidden="true"></span> -->
+                </div>
+                <div class="rows">
+                <div>
+                    <div class="label">No Rekening</div>
+                    <div class="value acc-number">1520010785315</div>
+                </div>
+                <div>
+                    <div class="label">Atas Nama</div>
+                    <div class="value"><small class="holder">Achmad Fhaizhal Alqadri</small></div>
+                </div>
+                </div>
+                <div class="ctrl">
+                <button class="btn-copy" data-copy=".acc-number" type="button">
+                    <span aria-hidden="true">📋</span> Salin
+                </button>
+                </div>
+            </article>
+
+            <!-- Tambah kartu lain cukup duplikasi <article class="bank-card ..."> di atas -->
+            </div>
+        </div>
+        </div>
+    </div>
     </section>
+
+    <!-- Toast notifikasi -->
+    <div id="toast-mini" class="toast-mini" role="status" aria-live="polite">Tersalin</div>
+
+   
     <!-- Gift End -->
     <!--? Contact form Start -->
     <!-- <div class="contact-form section-padding30 fix">
@@ -815,6 +966,37 @@
     //     const timer = setInterval(tick, 1000);
     // })();
 
+    // Kartu 
+     // Salin teks dari selector di dalam kartu
+    function showToast(msg='Tersalin') {
+        const t = document.getElementById('toast-mini');
+        if (!t) return;
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(showToast._tid);
+        showToast._tid = setTimeout(()=> t.classList.remove('show'), 1400);
+    }
+
+    document.addEventListener('click', async (e) => {
+        const btn = e.target.closest('.btn-copy');
+        if (!btn) return;
+        const card = btn.closest('.bank-card');
+        const selector = btn.getAttribute('data-copy') || '.acc-number';
+        const el = card.querySelector(selector);
+        if (!el) return;
+
+        const raw = (el.textContent || '').replace(/\s+/g,'').trim();
+        try {
+        await navigator.clipboard.writeText(raw);
+        showToast('Nomor rekening tersalin');
+        } catch {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = raw; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        showToast('Nomor rekening tersalin');
+        }
+    });
    
     /* Helper umum */
     function startCountdown(iso, ids) {
